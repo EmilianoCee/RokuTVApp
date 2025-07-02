@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Scene2910" extends="Scene"> 
+    <script type="text/brightscript" uri="MainScene.brs"></script>
+
+	<children>
+      <Label id="myLabel" 
+      	width="1280" 
+      	height="720" 
+      	horizAlign="center"
+      	vertAlign="center"
+      	/>
+    </children>
+    
+</component>
