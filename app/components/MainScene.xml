@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="Scene2910" extends="Scene"> 
-    <script type="text/brightscript" uri="MainScene.brs"></script>
+<component name="MainScene" extends="Scene">
+    <script type="text/brightscript" uri="MainScene.brs" />
+    <script type="text/brightscript" uri="tasks/MainLoaderTask.brs" />
+    <script type="text/brightscript" uri="ui-logic/ScreenStackingLogic.brs"/>
+    <script type="text/brightscript" uri="ui-logic/ContentTaskLogic.brs"/>
+    
+    <Label
+        id="loadingIndicator"
+        text="Loading..."
+        width="1280"
+        height="720"
+        translation="[0,0]"
+        horizAlign="center"
+        vertAlign="center"
+        visible="false"
+        font="font:MeduimBoldSystemFont"
+    />
 
-	<children>
-      <Label id="myLabel" 
-      	width="1280" 
-      	height="720" 
-      	horizAlign="center"
-      	vertAlign="center"
-      	/>
-    </children>
     
 </component>
