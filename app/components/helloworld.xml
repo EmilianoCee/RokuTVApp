@@ -20,7 +20,7 @@
   function init()
     m.top.setFocus(true)
     m.myLabel = m.top.findNode("myLabel")
-    m.myLabel.text = "GOOOOON"
+    m.myLabel.text = "GOOOOp"
 
     
     'Set the font size

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="MainScene" extends="Scene">
-    <script type="text/brightscript" uri="MainScene.brs" />
-    <script type="text/brightscript" uri="tasks/MainLoaderTask.brs" />
-    <script type="text/brightscript" uri="ui-logic/ScreenStackingLogic.brs"/>
-    <script type="text/brightscript" uri="ui-logic/ContentTaskLogic.brs"/>
-    
+<script type="text/brightscript" uri="MainScene.brs" />    
+<children>
+    <Timer id="colorTimer" repeat="true" duration="2" />
     <Label
         id="loadingIndicator"
         text="Loading..."
@@ -16,6 +14,6 @@
         visible="false"
         font="font:MeduimBoldSystemFont"
     />
-
+</children>
     
 </component>
