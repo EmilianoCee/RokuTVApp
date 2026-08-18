@@ -11,8 +11,6 @@
         translation="[0,0]"
         horizAlign="center"
         vertAlign="center"
-        visible="false"
-        font="font:MeduimBoldSystemFont"
     />
 </children>
     
