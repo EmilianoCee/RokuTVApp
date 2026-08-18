@@ -11,5 +11,6 @@
         wrap="true"
         font="font:MediumSystemFont"
     />
+    <Timer id="refreshTimer" repeat="true" />
 </children>
 </component>

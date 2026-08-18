@@ -5,10 +5,13 @@
 #
 
 ##   Channel Details
-title=Hello World
+title=Bus Times
 major_version=1
 minor_version=0
 build_version=00001
+
+##   Screensaver
+screensaver_title=Bus Times
 
 ##   Channel Assets
 ###  Main Menu Icons / Channel Poster Artwork 

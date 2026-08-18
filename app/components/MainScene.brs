@@ -1,8 +1,20 @@
 sub init()
     m.output = m.top.findNode("output")
     m.output.text = "Loading nearby stops..."
+    m.reg = CreateObject("roRegistrySection", "BusScreensaver")
+
+    m.refreshTimer = m.top.findNode("refreshTimer")
+    m.refreshTimer.duration = GetRegNumber("refresh", 60)
+    m.refreshTimer.observeField("fire", "LoadNearbyBuses")
+    m.refreshTimer.control = "start"
+
     LoadNearbyBuses()
 end sub
+
+function GetRegNumber(key as String, default as Float) as Float
+    if m.reg.Exists(key) then return Val(m.reg.Read(key))
+    return default
+end function
 
 function ReadApiToken() as String
     tokenText = ReadAsciiFile("pkg:/components/token.txt")
@@ -48,9 +60,9 @@ sub LoadNearbyBuses()
         return
     end if
 
-    lat = "37.856685"
-    lon = "-122.264832"
-    distance = "1000"
+    lat = Str(GetRegNumber("lat", 37.856685)).Trim()
+    lon = Str(GetRegNumber("lon", -122.264832)).Trim()
+    distance = Str(Int(GetRegNumber("distance", 1000))).Trim()
 
     stopsUrl = "https://api.actransit.org/transit/stops/" + lat + "/" + lon + "/" + distance + "/false/?token=" + token
     stops = HttpGetJson(stopsUrl)

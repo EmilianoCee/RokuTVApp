@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SettingsScene" extends="Scene">
+<script type="text/brightscript" uri="SettingsScene.brs" />
+<children>
+    <Label
+        id="fieldsLabel"
+        translation="[60,60]"
+        width="1160"
+        height="400"
+        wrap="true"
+        font="font:MediumSystemFont"
+    />
+    <Label
+        text="Up/Down: select field     Left/Right: adjust value     Back: save and exit"
+        translation="[60,620]"
+        width="1160"
+        height="60"
+        font="font:SmallSystemFont"
+        color="0xAAAAAAFF"
+    />
+</children>
+</component>

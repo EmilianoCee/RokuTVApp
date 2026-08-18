@@ -3,16 +3,14 @@
 '** 2025
 '*************************************************************
 
-sub main()  
+sub RunScreenSaver()
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
 
-    'Create a scene and load /components/MainScene.xml'
     scene = screen.CreateScene("MainScene")
     screen.show()
 
-    'Event loop
     while(true)
         msg = wait(0, m.port)
         msgType = type(msg)
@@ -22,3 +20,19 @@ sub main()
     end while
 end sub
 
+sub RunScreenSaverSettings()
+    screen = CreateObject("roSGScreen")
+    m.port = CreateObject("roMessagePort")
+    screen.setMessagePort(m.port)
+
+    scene = screen.CreateScene("SettingsScene")
+    screen.show()
+
+    while(true)
+        msg = wait(0, m.port)
+        msgType = type(msg)
+        if msgType = "roSGScreenEvent"
+            if msg.isScreenClosed() then return
+        end if
+    end while
+end sub
