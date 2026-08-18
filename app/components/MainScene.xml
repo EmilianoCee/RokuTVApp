@@ -3,10 +3,18 @@
 <script type="text/brightscript" uri="MainScene.brs" />
 <children>
     <Label
-        id="output"
+        id="outputLeft"
         text="Loading nearby stops..."
         translation="[40,40]"
-        width="1200"
+        width="560"
+        height="640"
+        wrap="true"
+        font="font:MediumSystemFont"
+    />
+    <Label
+        id="outputRight"
+        translation="[680,40]"
+        width="560"
         height="640"
         wrap="true"
         font="font:MediumSystemFont"

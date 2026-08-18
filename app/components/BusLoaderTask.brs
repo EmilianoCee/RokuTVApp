@@ -8,19 +8,20 @@ sub RunLoad()
     lon = m.top.lon
     distance = m.top.distance
 
+    m.top.statusText = ""
+    m.top.stopBlocks = []
+
     stopsUrl = "https://api.actransit.org/transit/stops/" + lat + "/" + lon + "/" + distance + "/false/?token=" + token
     stops = HttpGetJson(stopsUrl)
 
     if stops = invalid or stops.Count() = 0 then
-        m.top.resultText = "No stops found within " + distance + " ft"
+        m.top.statusText = "No stops found within " + distance + " ft"
         return
     end if
 
-    lines = "Nearby stops (" + Str(stops.Count()).Trim() + ")" + Chr(10) + Chr(10)
-    m.top.resultText = lines
-
-    maxStops = 6
+    maxStops = 12
     checked = 0
+    blocks = []
 
     for each stopItem in stops
         if checked >= maxStops then exit for
@@ -30,21 +31,21 @@ sub RunLoad()
         stopName = stopItem.Name
         if stopName = invalid then stopName = "Stop " + Str(stopId).Trim()
 
-        lines = lines + stopName + Chr(10)
+        block = stopName + Chr(10)
 
         predictionsUrl = "https://api.actransit.org/transit/stops/" + Str(stopId).Trim() + "/predictions?token=" + token
         predictions = HttpGetJson(predictionsUrl)
 
         if predictions <> invalid and predictions.Count() > 0 then
             for each p in predictions
-                lines = lines + "  " + FormatPrediction(p) + Chr(10)
+                block = block + "  " + FormatPrediction(p) + Chr(10)
             end for
         else
-            lines = lines + "  No upcoming buses" + Chr(10)
+            block = block + "  No upcoming buses" + Chr(10)
         end if
 
-        lines = lines + Chr(10)
-        m.top.resultText = lines
+        blocks.Push(block)
+        m.top.stopBlocks = blocks
     end for
 end sub
 

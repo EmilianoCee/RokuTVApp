@@ -6,6 +6,7 @@
     <field id="lon" type="string" />
     <field id="distance" type="string" />
     <field id="token" type="string" />
-    <field id="resultText" type="string" alwaysNotify="true" />
+    <field id="statusText" type="string" alwaysNotify="true" />
+    <field id="stopBlocks" type="array" alwaysNotify="true" />
 </interface>
 </component>
