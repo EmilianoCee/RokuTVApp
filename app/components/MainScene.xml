@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="MainScene" extends="Scene">
-<script type="text/brightscript" uri="MainScene.brs" />    
+<script type="text/brightscript" uri="MainScene.brs" />
 <children>
-    <Timer id="colorTimer" repeat="true" duration="2" />
     <Label
-        id="loadingIndicator"
-        text="Loading..."
-        width="1280"
-        height="720"
-        translation="[0,0]"
-        horizAlign="center"
-        vertAlign="center"
+        id="output"
+        text="Loading nearby stops..."
+        translation="[40,40]"
+        width="1200"
+        height="640"
+        wrap="true"
+        font="font:MediumSystemFont"
     />
 </children>
-    
 </component>
