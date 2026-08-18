@@ -61,6 +61,7 @@ sub LoadNearbyBuses()
     end if
 
     lines = "Nearby stops (" + Str(stops.Count()).Trim() + ")" + Chr(10) + Chr(10)
+    m.output.text = lines
 
     for each stop in stops
         stopId = stop.StopId
@@ -69,18 +70,40 @@ sub LoadNearbyBuses()
 
         lines = lines + stopName + Chr(10)
 
-        routesUrl = "https://api.actransit.org/transit/stops/" + Str(stopId).Trim() + "/routes?token=" + token
-        routeData = HttpGetJson(routesUrl)
+        predictionsUrl = "https://api.actransit.org/transit/stops/" + Str(stopId).Trim() + "/predictions?token=" + token
+        predictions = HttpGetJson(predictionsUrl)
 
-        if routeData <> invalid and routeData.Count() > 0
-            for each r in routeData
-                lines = lines + "  " + FormatJson(r) + Chr(10)
+        if predictions <> invalid and predictions.Count() > 0
+            for each p in predictions
+                lines = lines + "  " + FormatPrediction(p) + Chr(10)
             end for
         else
-            lines = lines + "  (no route/time data returned)" + Chr(10)
+            lines = lines + "  No upcoming buses" + Chr(10)
         end if
 
         lines = lines + Chr(10)
         m.output.text = lines
     end for
 end sub
+
+function FormatPrediction(p as Object) as String
+    route = p.RouteName
+    if route = invalid then route = "?"
+
+    depart = p.PredictedDeparture
+    timeStr = "?"
+    if depart <> invalid and Len(depart) >= 16 then timeStr = Mid(depart, 12, 5)
+
+    delaySec = p.PredictedDelayInSeconds
+    delayStr = ""
+    if delaySec <> invalid and delaySec <> 0
+        delayMin = Int(Abs(delaySec) / 60)
+        if delaySec > 0
+            delayStr = " (delayed " + Str(delayMin).Trim() + " min)"
+        else
+            delayStr = " (" + Str(delayMin).Trim() + " min early)"
+        end if
+    end if
+
+    return "Route " + route + " - " + timeStr + delayStr
+end function
