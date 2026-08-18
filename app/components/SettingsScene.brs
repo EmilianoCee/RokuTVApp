@@ -33,21 +33,21 @@ end sub
 function onKeyEvent(key as String, press as Boolean) as Boolean
     if not press then return false
 
-    if key = "up"
+    if key = "up" then
         m.selected = (m.selected - 1 + m.fields.Count()) mod m.fields.Count()
         RenderFields()
         return true
-    else if key = "down"
+    else if key = "down" then
         m.selected = (m.selected + 1) mod m.fields.Count()
         RenderFields()
         return true
-    else if key = "right"
+    else if key = "right" then
         AdjustSelected(1)
         return true
-    else if key = "left"
+    else if key = "left" then
         AdjustSelected(-1)
         return true
-    else if key = "back"
+    else if key = "back" then
         SaveSettings()
         return false
     end if

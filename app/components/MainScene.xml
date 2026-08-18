@@ -12,5 +12,6 @@
         font="font:MediumSystemFont"
     />
     <Timer id="refreshTimer" repeat="true" />
+    <BusLoaderTask id="loaderTask" />
 </children>
 </component>

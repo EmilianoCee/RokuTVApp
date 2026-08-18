@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BusLoaderTask" extends="Task">
+<script type="text/brightscript" uri="BusLoaderTask.brs" />
+<interface>
+    <field id="lat" type="string" />
+    <field id="lon" type="string" />
+    <field id="distance" type="string" />
+    <field id="token" type="string" />
+    <field id="resultText" type="string" alwaysNotify="true" />
+</interface>
+</component>
